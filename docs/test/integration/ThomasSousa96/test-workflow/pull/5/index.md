@@ -4,13 +4,12 @@
 
 ## Status
 
-:large_orange_diamond: Pending
-<!-- :heavy_check_mark: Success -->
+<!-- :large_orange_diamond: Pending -->
+:heavy_check_mark: Success
 <!-- :x: Failure -->
 <!-- :o: Error -->
 
-#
-# Reports
+## Reports
 
 - [pretty_report](pretty_report.html)
 
