@@ -1,0 +1,19 @@
+name: Update integration tests
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - test/integration/**
+
+jobs:
+  update-commit-status:
+    runs-on: ubuntu-latest
+    name: Update commit status
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - name: Set commit status
+        run: |
+          echo "${{ toJSON(github) }}"
