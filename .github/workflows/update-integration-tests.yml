@@ -5,7 +5,7 @@ on:
     branches:
       - master
     paths:
-      - docs/test/integration/**
+      - docs/test/integration/*/*/pull/*/index.md
 
 jobs:
   update-commit-status:
