@@ -14,12 +14,19 @@ jobs:
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v2
+        with:
+          ref: master
+          fetch-depth: 0
+
       - name: Get changed files
         run: |
           CHANGED_FILES=$(git diff --name-only ${{ github.event.before }}..${{ github.event.after }})
           CHANGED_INDEX_FILES=$(grep "docs/test/integration/.*/.*/pull/.*/index.md" $CHANGED_FILES)
           echo "$CHANGED_INDEX_FILES"
           echo "CHANGED_INDEX_FILES=$CHANGED_INDEX_FILES" >> $GITHUB_ENV
+
       - name: Update commit status
         run: |
           for file in $CHANGED_INDEX_FILES
