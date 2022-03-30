@@ -1,6 +1,13 @@
 # Test/Integration
 
-## Result: Success
+## Status
+
+- [x] :large_orange_diamond: Pending
+- [ ] :heavy_check_mark: Success
+- [ ] :x: Failure
+- [ ] :x: Error
+
+## Reports
 
 - [pretty_report](pretty_report.html)
 
