@@ -4,7 +4,7 @@
 
 ## Status
 
-- [x] :orange_circle: Pending
+- [x] :large_orange_diamond: Pending
 - [ ] :heavy_check_mark: Success
 - [ ] :x: Failure
 - [ ] :x: Error
