@@ -7,7 +7,7 @@
 :large_orange_diamond: Pending
 <!-- :heavy_check_mark: Success -->
 <!-- :x: Failure -->
-<!-- :x: Error -->
+<!-- :small_red_triangle: Error -->
 
 ## Reports
 
