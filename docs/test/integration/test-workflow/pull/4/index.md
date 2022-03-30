@@ -4,10 +4,10 @@
 
 ## Status
 
-:large_orange_diamond: Pending
+<!-- :large_orange_diamond: Pending -->
 <!-- :heavy_check_mark: Success -->
 <!-- :x: Failure -->
-<!-- :small_red_triangle: Error -->
+:small_red_triangle: Error
 
 ## Reports
 
