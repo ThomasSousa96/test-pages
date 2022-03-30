@@ -1,6 +1,6 @@
 # Test/Integration
 
-- ThomasSousa96/test-workflow#4
+[ThomasSousa96/test-workflow#4](https://github.com/ThomasSousa96/test-workflow/pull/4)
 
 ## Status
 
