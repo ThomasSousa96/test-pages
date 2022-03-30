@@ -29,7 +29,15 @@ jobs:
 
       - name: Update commit status
         run: |
-          for file in $CHANGED_INDEX_FILES
-          do
-            echo "changed $file"
-          done
+          import os, re
+          paths = os.environ.get("CHANGED_INDEX_FILES").splitlines()
+          for path in paths:
+            print(f"Changed file: {path}")
+
+            with open (path, "r" ) as f:
+              content = f.read()
+              status_search = re.search(r"(?s)^##\s+Status\n\s*(.*?)\s*^#", content, flags = re.M)
+              if status_search:
+                statuses = status_search.group(1)
+                print(statuses)
+        shell: python
