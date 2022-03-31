@@ -2,12 +2,9 @@
 
 [ThomasSousa96/test-workflow#6](https://github.com/ThomasSousa96/test-workflow/pull/6)
 
-## Status
+## Status2
 
-<!-- :large_orange_diamond: Pending -->
-:heavy_check_mark: Success
-<!-- :x: Failure -->
-<!-- :o: Error -->
+esofoiuesjofjoesijoifes
 
 ## Reports
 
