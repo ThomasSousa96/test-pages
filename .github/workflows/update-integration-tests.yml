@@ -88,14 +88,13 @@ jobs:
                 print("\nBody:")
                 print(json.dumps(response.json(), indent=4))
                 print("::endgroup::")
-                print("\n")
 
                 if response.status_code != 200:
                   print(f"::error::Expected response status 200, but it was {response.status_code}")
                   sys.exit(result.returncode)
 
                 sha = response.json().get("head").get("sha")
-                print(f"Head commit SHA: {sha}\n")
+                print(f"Head commit SHA: {sha}")
 
                 print("Updating commit status...")
                 response = requests.post(f"https://api.github.com/repos/{repo}/statuses/{sha}",
@@ -117,7 +116,6 @@ jobs:
                 print("\nBody:")
                 print(json.dumps(response.json(), indent=4))
                 print("::endgroup::")
-                print("\n")
 
                 if response.status_code != 201:
                   print(f"::error::Expected response status 201, but it was {response.status_code}")
