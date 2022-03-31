@@ -4,9 +4,9 @@
 
 ## Status
 
-:large_orange_diamond: Pending
+<!-- :large_orange_diamond: Pending -->
 <!-- :heavy_check_mark: Success -->
-<!-- :x: Failure -->
+:x: Failure
 <!-- :o: Error -->
 
 ## Reports
@@ -27,7 +27,29 @@ ENV=staging DEBUG_MODE=false CLEAN_REPORTS=true ruby run.rb features/api
 
 You can run the tests any necessary times. When you decide that the tests is finished (success, failure or error) [upload](https://github.com/ThomasSousa96/test-pages/upload/master/docs/test/integration/ThomasSousa96/test-workflow/pull/5) the `pretty_report.html` to the same folder of this file. For more details about the tests see the [RocketBus/qa-automatization repository](https://github.com/RocketBus/qa-automatization).
 
-## Update the status
+### Update the status
 
-Update the Status section of this {% github_edit_link "file" %}. Uncomment some status line to active some status and comment the others status lines.
+Update the **Status** section of this {% github_edit_link "file" %}. Uncomment some status line to active some status and comment the others status lines.
 Note: Use `CRLT + /` to comment/uncomment the line.
+
+The below example show how to activate the `Success` status:
+
+```md
+## Status
+
+<!-- :large_orange_diamond: Pending -->
+:heavy_check_mark: Success
+<!-- :x: Failure -->
+<!-- :o: Error -->
+```
+
+The below example show how to activate the `Failure` status:
+
+```md
+## Status
+
+<!-- :large_orange_diamond: Pending -->
+<!-- :heavy_check_mark: Success -->
+:x: Failure
+<!-- :o: Error -->
+```
