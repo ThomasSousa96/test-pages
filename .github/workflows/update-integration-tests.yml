@@ -39,7 +39,7 @@ jobs:
             'pending': 'Pending integration tests',
             'success': 'Successful integration tests',
             'failure': 'Failed integration tests',
-            'error': 'Error to run integration tests',
+            'error': 'Error while running integration tests',
           }
 
           paths = os.environ.get("CHANGED_INDEX_FILES").splitlines()
