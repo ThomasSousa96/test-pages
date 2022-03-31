@@ -11,8 +11,6 @@ jobs:
   update-commit-status:
     runs-on: ubuntu-latest
     name: Update commit status
-    env:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v2
@@ -31,6 +29,7 @@ jobs:
         env:
           GITHUB_USERNAME: ThomasSousa96
           GITHUB_PASSWORD: ${{ secrets.ACCESS_TOKEN }}
+          RESULT_PAGE_BASE_URL: https://thomassousa96.github.io/test-pages
         shell: python
         run: |
           import os, sys, re, requests, json
