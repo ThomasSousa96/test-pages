@@ -1,5 +1,7 @@
 # test/integration
 
+![Update integration tests](https://github.com/ThomasSousa96/test-pages/actions/workflows/update-integration-tests.yml/badge.svg?branch=master)
+
 [ThomasSousa96/test-workflow#6](https://github.com/ThomasSousa96/test-workflow/pull/6)
 
 ## Status
