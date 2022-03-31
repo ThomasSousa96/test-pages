@@ -7,7 +7,7 @@
 <!-- :large_orange_diamond: Pending -->
 :heavy_check_mark: Success
 <!-- :x: Failure -->
-<!-- :o: Error -->
+:o: Error
 
 ## Reports
 
