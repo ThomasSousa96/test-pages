@@ -35,9 +35,10 @@ jobs:
             print(f"Changed file: {path}")
 
             with open (path, "r" ) as f:
-              content = f.read()
-              status_search = re.search(r"(?s)^##\s+Status\n\s*(.*?)\s*^#", content, flags = re.M)
+              file_content = f.read()
+              status_search = re.search(r"(?s)^##\s+Status\n\s*(.*?)\s*^#", file_content, flags = re.M)
               if status_search:
                 statuses = status_search.group(1)
-                print(statuses)
+                active_statuses = re.findall(r"^:.*: (.*)$", statuses)
+                print(active_statuses)
         shell: python
