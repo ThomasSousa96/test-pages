@@ -73,7 +73,7 @@ jobs:
                 sys.exit(1)
               else:
                 active_status = active_statuses[0].lower()
-                target_url = os.environ.get("RESULT_PAGE_BASE_URL") + f"docs/test/integration/{repo}/pull/{pull_request_number}"
+                target_url = os.environ.get("RESULT_PAGE_BASE_URL") + f"/test/integration/{repo}/pull/{pull_request_number}"
 
                 print(f"Active status: {active_status}")
 
