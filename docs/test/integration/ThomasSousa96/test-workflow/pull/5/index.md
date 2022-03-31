@@ -33,7 +33,7 @@ When you finish the test execution, independent if the final result was success,
 
 ### Update the `Status` section
 
-Update the **Status** section of this [file](https://github.com/ThomasSousa96/test-pages/edit/master/docs/test/integration/ThomasSousa96/test-workflow/pull/5/index.md), uncommenting some status line and commenting the others status lines.
+Update the **Status** section of this [file](https://github.com/ThomasSousa96/test-pages/edit/master/docs/test/integration/ThomasSousa96/test-workflow/pull/5/index.md), uncommenting the status line that represent the final result of the tests execution and commenting the others status lines.
 
 The below example show how to activate the `Success` status:
 
@@ -57,7 +57,7 @@ The below example show how to activate the `Failure` status:
 <!-- :o: Error -->
 ```
 
-Tip: Use `CRLT + /` to comment/uncomment the line.
+:bulb: Use `CRLT + /` to comment/uncomment the line.
 
 ### Update the `Details` section
 
