@@ -35,8 +35,6 @@ Update the **Status** section of this [file](https://github.com/ThomasSousa96/te
 The below example show how to activate the `Success` status:
 
 ```md
-## Status
-
 <!-- :large_orange_diamond: Pending -->
 :heavy_check_mark: Success
 <!-- :x: Failure -->
@@ -46,8 +44,6 @@ The below example show how to activate the `Success` status:
 The below example show how to activate the `Failure` status:
 
 ```md
-## Status
-
 <!-- :large_orange_diamond: Pending -->
 <!-- :heavy_check_mark: Success -->
 :x: Failure
