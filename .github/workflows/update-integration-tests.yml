@@ -58,63 +58,68 @@ jobs:
             with open (path, "r" ) as f:
               file_content = f.read()
               status_search = re.search(r"(?s)^##\s+Status\n\s*(.*?)\s*^#", file_content, flags = re.M)
-              if status_search:
-                statuses = status_search.group(1)
-                active_statuses = re.findall(r"^:.*: (Pending|Success|Failure|Error)$", statuses, flags = re.M)
-                if len(active_statuses) == 0:
-                  print("::error::None active status")
-                  sys.exit(1)
-                elif len(active_statuses) > 1:
-                  print(f"::error::Multiple active status: {active_statuses}")
-                  sys.exit(1)
-                else:
-                  active_status = active_statuses[0].lower()
-                  target_url = os.environ.get("RESULT_PAGE_BASE_URL") + f"docs/test/integration/{repo}/pull/{pull_request_number}"
 
-                  print(f"Active status: {active_status}")
+              if not status_search:
+                print("::error::Not found status section.")
+                sys.exit(1)
 
-                  print("Getting head commit SHA...")
-                  response = requests.get(f"https://api.github.com/repos/{repo}/pulls/{pull_request_number}",
-                    auth=HTTPBasicAuth(os.environ.get("GITHUB_USERNAME"), os.environ.get("GITHUB_PASSWORD"))
-                  )
+              statuses = status_search.group(1)
+              active_statuses = re.findall(r"^:.*: (Pending|Success|Failure|Error)$", statuses, flags = re.M)
 
-                  print("::group::Github API response")
-                  print(f"Status: {response.status_code}\nHeaders:")
-                  print(json.dumps(dict(response.headers), indent=4))
-                  print("\nBody:")
-                  print(json.dumps(response.json(), indent=4))
-                  print("::endgroup::")
-                  print("\n")
+              if len(active_statuses) == 0:
+                print("::error::None active status. One status must be active.")
+                sys.exit(1)
+              elif len(active_statuses) > 1:
+                print(f"::error::Multiple active status: {active_statuses}. Only one status must be active.")
+                sys.exit(1)
+              else:
+                active_status = active_statuses[0].lower()
+                target_url = os.environ.get("RESULT_PAGE_BASE_URL") + f"docs/test/integration/{repo}/pull/{pull_request_number}"
 
-                  if response.status_code != 200:
-                    print(f"::error::Expected response status 200, but it was {response.status_code}")
-                    sys.exit(result.returncode)
+                print(f"Active status: {active_status}")
 
-                  sha = response.json().get("head").get("sha")
-                  print(f"Head commit SHA: {sha}\n")
+                print("Getting head commit SHA...")
+                response = requests.get(f"https://api.github.com/repos/{repo}/pulls/{pull_request_number}",
+                  auth=HTTPBasicAuth(os.environ.get("GITHUB_USERNAME"), os.environ.get("GITHUB_PASSWORD"))
+                )
 
-                  print("Updating commit status...")
-                  response = requests.post(f"https://api.github.com/repos/{repo}/statuses/{sha}",
-                    auth=HTTPBasicAuth(os.environ.get("GITHUB_USERNAME"), os.environ.get("GITHUB_PASSWORD")),
-                    headers={
-                      "Content-Type": "application/json"
-                    },
-                    json = {
-                      "description": status_descriptions[active_status],
-                      "state": active_status,
-                      "context": "test/integration",
-                      "target_url": target_url,
-                    }
-                  )
+                print("::group::Github API response")
+                print(f"Status: {response.status_code}\nHeaders:")
+                print(json.dumps(dict(response.headers), indent=4))
+                print("\nBody:")
+                print(json.dumps(response.json(), indent=4))
+                print("::endgroup::")
+                print("\n")
 
-                  print("::group::Github API response")
-                  print(f"Status: {response.status_code}\nHeaders:")
-                  print(json.dumps(dict(response.headers), indent=4))
-                  print("\nBody:")
-                  print(json.dumps(response.json(), indent=4))
-                  print("::endgroup::")
-                  print("\n")
+                if response.status_code != 200:
+                  print(f"::error::Expected response status 200, but it was {response.status_code}")
+                  sys.exit(result.returncode)
 
-                  if response.status_code != 201:
-                    print(f"::error::Expected response status 201, but it was {response.status_code}")
-                    sys.exit(result.returncode)
+                sha = response.json().get("head").get("sha")
+                print(f"Head commit SHA: {sha}\n")
+
+                print("Updating commit status...")
+                response = requests.post(f"https://api.github.com/repos/{repo}/statuses/{sha}",
+                  auth=HTTPBasicAuth(os.environ.get("GITHUB_USERNAME"), os.environ.get("GITHUB_PASSWORD")),
+                  headers={
+                    "Content-Type": "application/json"
+                  },
+                  json = {
+                    "description": status_descriptions[active_status],
+                    "state": active_status,
+                    "context": "test/integration",
+                    "target_url": target_url,
+                  }
+                )
+
+                print("::group::Github API response")
+                print(f"Status: {response.status_code}\nHeaders:")
+                print(json.dumps(dict(response.headers), indent=4))
+                print("\nBody:")
+                print(json.dumps(response.json(), indent=4))
+                print("::endgroup::")
+                print("\n")
+
+                if response.status_code != 201:
+                  print(f"::error::Expected response status 201, but it was {response.status_code}")
+                  sys.exit(result.returncode)
